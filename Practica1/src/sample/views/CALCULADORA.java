@@ -11,50 +11,49 @@ import javafx.stage.Stage;
 
 public class CALCULADORA extends Stage {
 
-    private Scene escena;
+    private Scene esena;
     private TextField txtOperacion;
-    private HBox[] hBoxes ;
-    private Button[] arbotones;
+    private HBox[] hBoxes;
+    private Button[] arBtn;
     private VBox vBox;
-    private char[] arNumero = {'7','8','9','/','4','5','6','*','1','2','3','-','0','=','+'};
+    private  char[] arNumeros = {'7','8','9','/','4','5','6','*','1','2','3','-','0','.','=','+'};
 
-    public CALCULADORA (){
+    public CALCULADORA() {
 
         CrearUI();
 
         this.setTitle("Calculadora");
-        this.setScene(escena);;
+        this.setScene(esena);
         this.show();
     }
 
     private void CrearUI() {
         vBox = new VBox();
         hBoxes = new HBox[4];
-        arbotones = new Button[16];
+        arBtn = new Button[16];
         txtOperacion = new TextField();
         txtOperacion.setEditable(false);
         txtOperacion.setPrefHeight(50);
         txtOperacion.setText("0");
-        txtOperacion.setAlignment(Pos.BASELINE_RIGHT);
 
-        int post = 0;
-
-        for (int i = 0; i < hBoxes.length ; i++){// Itegrarme sobre el arreglo de hbox
+        int pos = 0;
+        for (int i = 0; i < hBoxes.length; i++ ){//iterarme para el arreglo de HBox
             hBoxes[i] = new HBox();
             hBoxes[i].setSpacing(10);
-            hBoxes[i].setPadding(new Insets(5));
+            hBoxes[i].setPadding( new Insets(7));
 
-            for (int j = 0; j < 4; j++){//Ciclo para crear y cargr 4 botones
-                arbotones[post] = new Button(arNumero[post]+"");
-                arbotones[post].setPrefSize(50,50);
-                hBoxes[i].getChildren().add(arbotones[post]);
-                post++; //Contador de los botones creados
+            for (int j = 0; j < 4; j++) {//ciclo para crear y cargar 4 botones
+                arBtn[pos] = new Button(arNumeros[pos]+"");
+                arBtn[pos].setPrefSize(50,50);
+                hBoxes[i].getChildren().add(arBtn[pos]);
+                pos++;//contador de botones creados
             }
-
         }
-        vBox.getChildren().addAll(txtOperacion, hBoxes[0], hBoxes[1], hBoxes[2], hBoxes[3]);
+        vBox.setStyle(" -fx-background-color: #757272");
+        vBox.getChildren().addAll(txtOperacion,hBoxes[0],hBoxes[1],hBoxes[2],hBoxes[3]);
         vBox.setPadding(new Insets(8,5,5,5));
-        escena = new Scene(vBox, 250,250);
-    }
 
-}
+        esena = new Scene(vBox, 250, 250);
+    }//cearUI
+
+}//class

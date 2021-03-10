@@ -1,77 +1,69 @@
 package sample;
-import com.sun.prism.paint.Color;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import sample.views.CALCULADORA;
 
 public class Main extends Application {
 
     private VBox vBox;
-    private MenuBar mnbarPrincipal;
-    private Menu menComp1, menComp2, menCerrar;
-    private MenuItem miCalc, miSalir;
+    private MenuBar mnbPrincipal;
+    private Menu menCompetencia1, menCompetencia2, menCerrar;
+    private MenuItem mitCalcu,mitSalir;
     private Scene escena;
-
-
-    /*
-    private HBox hBox;
-
-    private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7;
-    private FlowPane flowpane = new FlowPane();
-    */
-
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        //Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
-        CrearUi();
+        CrearMenu();
 
-        primaryStage.setTitle("clase 3");
+        primaryStage.setTitle("Proyecto de Clase TAP 2021");
         primaryStage.setScene(escena);
         primaryStage.setMaximized(true);
         primaryStage.show();
-
     }
 
-    private void CrearUi() {
+    private void CrearMenu() {
         vBox = new VBox();
 
-        mnbarPrincipal = new MenuBar();
-        menComp1 = new Menu("Competencia 1");
-        menComp2 = new Menu("Competencia 1");
-        menCerrar = new Menu("Cerrar ");
-        mnbarPrincipal.getMenus().addAll( menComp1, menComp2, menCerrar);
+        mnbPrincipal    = new MenuBar();
+        menCompetencia1 = new Menu("Competencia 1");
+        menCompetencia2 = new Menu("Compentencia 2");
+        menCerrar       = new Menu("Cerrar");
+        mnbPrincipal.getMenus().addAll(menCompetencia1,menCompetencia2,menCerrar);
 
-        miCalc = new MenuItem("Calculadora");
-        miCalc.setOnAction(event -> opcionesMenu(1));
-        menComp1.getItems().add(miCalc);
-
-        miSalir = new MenuItem("Salir");
-        miSalir.setOnAction( event -> { System.exit(0);});
-
-        menCerrar.getItems().add(miSalir);
-        vBox.getChildren().add(mnbarPrincipal);
-
-        escena = new Scene(vBox, 300,100);
+        mitCalcu = new MenuItem("Calculadora");
+        mitCalcu.setOnAction(event -> opcionesMenu(1));
+        mitCalcu.setStyle(" -fx-background-color: #D5BBE1");
+        menCompetencia1.getItems().add(mitCalcu);
+        mnbPrincipal.setStyle(" -fx-background-color: #B0C438");
+        mitSalir  = new MenuItem("Salir");
+        mitSalir.setOnAction(event -> { System.exit(0);});
+        menCerrar.getItems().add(mitSalir);
+        vBox.setStyle(" -fx-background-color: #52A508");
+        vBox.getChildren().add(mnbPrincipal);
+        escena = new Scene(vBox, 300, 70);
 
     }
 
     private void opcionesMenu(int opc) {
-        switch (opc){
+        switch(opc){
             case 1: new CALCULADORA();
-            break;
         }
     }
 
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
         launch(args);
     }
-
 }
