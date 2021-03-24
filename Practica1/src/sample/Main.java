@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import sample.views.CALCULADORA;
+import sample.views.Encriptacion;
 import sample.views.RompeHD;
 
 public class Main extends Application {
@@ -19,7 +20,7 @@ public class Main extends Application {
     private VBox vBox;
     private MenuBar mnbPrincipal;
     private Menu menCompetencia1, menCompetencia2, menCerrar;
-    private MenuItem mitCalcu,mitCabeza,mitSalir;
+    private MenuItem mitCalcu,mitCabeza,mitEncriptacion,mitSalir;
     private Scene escena;
 
     @Override
@@ -50,16 +51,19 @@ public class Main extends Application {
         mitCabeza = new MenuItem("RompeCabezas");
         mitCabeza.setOnAction(event -> opcionesMenu(2));
 
-        menCompetencia1.getItems().addAll(mitCalcu,mitCabeza);
+        mitEncriptacion= new MenuItem("Encriptador");
+        mitEncriptacion.setOnAction(event -> opcionesMenu(3));
 
-        mnbPrincipal.setStyle(" -fx-background-color: #B0C438");
+        menCompetencia1.getItems().addAll(mitCalcu,mitCabeza,mitEncriptacion);
+
+        mnbPrincipal.setStyle(" -fx-background-color: #078A98");
 
         mitSalir  = new MenuItem("Salir");
         mitSalir.setOnAction(event -> { System.exit(0);});
 
         menCerrar.getItems().add(mitSalir);
 
-        vBox.setStyle(" -fx-background-color: #52A508");
+        vBox.setStyle(" -fx-background-color: #043F60");
         vBox.getChildren().add(mnbPrincipal);
 
         escena = new Scene(vBox, 300, 70);
@@ -71,6 +75,8 @@ public class Main extends Application {
             case 1: new CALCULADORA();
             break;
             case 2: new RompeHD();
+            break;
+            case 3: new Encriptacion();
         }
     }
     public static void main(String[] args) {
