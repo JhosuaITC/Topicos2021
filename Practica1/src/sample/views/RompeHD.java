@@ -16,117 +16,115 @@ import javafx.stage.Stage;
 
 public class RompeHD extends Stage implements EventHandler {
 
-    private String[] arIMagenes = {"fila-1-col-1.jpg","fila-1-col-2.jpg","fila-1-col-3.jpg","fila-1-col-4.jpg","fila-1-col-5.jpg","fila-2-col-1.jpg"
-            ,"fila-2-col-2.jpg","fila-2-col-3.jpg","fila-2-col-4.jpg","fila-2-col-5.jpg","fila-3-col-1.jpg","fila-3-col-2.jpg","fila-3-col-3.jpg"
-            ,"fila-3-col-4.jpg","fila-4-col-1.jpg","fila-4-col-2.jpg","fila-4-col-3.jpg","fila-4-col-4.jpg"};
-    private  String[][]arAsignacion;
-    private BorderPane borderpane;
-    private GridPane tablero;
-    private Button[][]btnTarjet;
-    private HBox hBox;
-    private Label lbtarjet;
-    private TextField txtTarjet;
-    private Button btnMix;
-    private Scene escena;
-    private int noPz;
-    private boolean NumSelect =false; //indica si ya se selecciono una carta para el intercambio
+    private String[] arImagenes = {"fila-1-col-1.jpg","fila-1-col-2.jpg","fila-1-col-3.jpg","fila-2-col-1.jpg"
+            ,"fila-2-col-2.jpg","fila-2-col-3.jpg","fila-3-col-1.jpg","fila-3-col-2.jpg","fila-3-col-3.jpg"};
+    private String[][] arAsignacion;
 
-    private int Xtemp,ytemp =0;
+    private BorderPane borderPane;
+    private GridPane tablero;
+    private Button[][] btnTarjetas;
+    private HBox hBox;
+    private Label lblTarjetas;
+    private TextField txtTarjetas;
+    private Button btnMezclar;
+    private Scene escena;
+
+    private int noPiezas;
+    private boolean bandera = false;   // Bandera nos indica si ya se seleccionó una carta para el intercambio
+    private int xTemp, yTemp = 0;
 
     public RompeHD(){
 
         CrearUI();
-        this.setTitle("RompeCabezas");
+        this.setTitle("Rompecabezas");
         this.setScene(escena);
         this.show();
     }
 
     private void CrearUI() {
 
-        borderpane = new BorderPane();
+        borderPane = new BorderPane();
 
-        lbtarjet = new Label("Cantidad Pz");
-        txtTarjet = new TextField();
-        btnMix = new Button("Mezclar Pz");
-        btnMix.addEventHandler(MouseEvent.MOUSE_CLICKED, this);
+        lblTarjetas = new Label("Cantidad de Tarjetas");
+        txtTarjetas = new TextField();
+        btnMezclar  = new Button("Mezclar Tarjetas");
+        btnMezclar.addEventHandler(MouseEvent.MOUSE_CLICKED,this);
+        hBox        = new HBox();
+        hBox.getChildren().addAll(lblTarjetas,txtTarjetas,btnMezclar);
 
-        hBox = new HBox();
-        hBox.getChildren().addAll(lbtarjet,txtTarjet,btnMix);
-
-        borderpane.setTop(hBox);
+        borderPane.setTop(hBox);
 
         tablero = new GridPane();
-        borderpane.setCenter(tablero);
+        borderPane.setCenter(tablero);
 
-        escena = new Scene(borderpane, 820,600);
-
-
+        escena = new Scene(borderPane,830,530);
     }
 
     @Override
     public void handle(Event event) {
-        noPz = Integer.parseInt(txtTarjet.getText());
-        btnTarjet = new Button[noPz][noPz];
-        arAsignacion = new String[5][5];
+        noPiezas = Integer.parseInt(txtTarjetas.getText());
+        btnTarjetas = new Button[noPiezas][noPiezas];
+        arAsignacion = new String[3][3];
+
         revolver();
 
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
 
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                Image img =new Image("sample/assets/" + arAsignacion[i][j]);
+                Image img = new Image("sample/assets/"+arAsignacion[i][j]);
                 ImageView imv = new ImageView(img);
-                imv.setFitHeight(80);
+                imv.setFitHeight(145);
                 imv.setPreserveRatio(true);
 
-
-                btnTarjet[i][j] = new Button();
-                int finalI = i;
+                btnTarjetas[i][j] = new Button();
                 int finalJ = j;
-                btnTarjet[i][j].setOnAction(event1 -> intercambio(finalI, finalJ));
-                btnTarjet[i][j].setGraphic(imv);
-                btnTarjet[i][j].setPrefSize(50,50);
-                tablero.add(btnTarjet[i][j], j,i);
+                int finalI = i;
+                btnTarjetas[i][j].setOnAction(event1 -> intercambio(finalI, finalJ));
+                btnTarjetas[i][j].setGraphic(imv);
+                //btnTarjetas[i][j].setPrefSize(50,50);
+                tablero.add(btnTarjetas[i][j],j,i);
             }
         }
     }
+
     private void intercambio(int i, int j){
-        //System.out.println("Posicion : "+i+" - "+j);
-        if (!NumSelect){
-            NumSelect = !NumSelect;
-            Xtemp=i;
-            ytemp=j;
-        }else {
-            Image img =new Image("sample/assets/" + arAsignacion[i][j]);
+        if( !bandera ){
+            bandera = !bandera;
+            xTemp = i;
+            yTemp = j;
+        }else{
+            Image img = new Image("sample/assets/"+arAsignacion[i][j]);
             ImageView imv = new ImageView(img);
-            imv.setFitHeight(80);
+            imv.setFitHeight(145);
             imv.setPreserveRatio(true);
 
-            Image img2 =new Image("sample/assets/" + arAsignacion[Xtemp][ytemp]);
+            Image img2 = new Image("sample/assets/"+arAsignacion[xTemp][yTemp]);
             ImageView imv2 = new ImageView(img2);
-            imv2.setFitHeight(80);
+            imv2.setFitHeight(145);
             imv2.setPreserveRatio(true);
 
-            btnTarjet[Xtemp][ytemp].setGraphic(imv);
-            btnTarjet[i][j].setGraphic(imv2);
+            btnTarjetas[xTemp][yTemp].setGraphic(imv);
+            btnTarjetas[i][j].setGraphic(imv2);
 
-            NumSelect = false;
+            bandera = !bandera;
         }
     }
 
     private void revolver(){
-        //Definir objetos String y llenando el arreglo bidimencional
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
+
+        // Definiendo objetos String y llenado con ellos el arrelgo bidimensional
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
                 arAsignacion[i][j] = new String();
             }
-
         }
-        int posx, posy =0;
-        for (int i = 0; i < arIMagenes.length;) {
-            posx = (int) (Math.random() * 4);
-            posy = (int) (Math.random() *4);
-            if (arAsignacion[posx][posy].equals("")){
-                arAsignacion[posx][posy] = arIMagenes[i];
+
+        int posx, posy = 0;
+        for (int i = 0; i < arImagenes.length;) {
+            posx = (int) ( Math.random() * 3 );  // 2.7
+            posy = (int) ( Math.random() * 3 );
+            if( arAsignacion[posx][posy].equals("") ){
+                arAsignacion[posx][posy] = arImagenes[i];
                 i++;
             }
         }

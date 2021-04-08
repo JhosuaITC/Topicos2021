@@ -51,13 +51,13 @@ public class CALCULADORA extends Stage implements EventHandler {
             for (int j = 0; j < 4; j++) {//ciclo para crear y cargar 4 botones
                 arBtn[pos] = new Button(arNumeros[pos]+"");
                 arBtn[pos].addEventHandler(MouseEvent.MOUSE_CLICKED, new EventCalcu(arNumeros[pos]));
-               arBtn[pos].addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+                arBtn[pos].addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
                         //System.out.println("Tercer Evento UwU:");
                     }
                 });
-               //txtOperacion.addEventHandler(MouseEvent.MOUSE_CLICKED);
+                //txtOperacion.addEventHandler(MouseEvent.MOUSE_CLICKED);
                 arBtn[pos].setPrefSize(50,50);
                 hBoxes[i].getChildren().add(arBtn[pos]);
                 pos++;//contador de botones creados
@@ -72,7 +72,7 @@ public class CALCULADORA extends Stage implements EventHandler {
 
     @Override
     public void handle(Event event) {
-       // System.out.println("Primer Evento UwU");
+        // System.out.println("Primer Evento UwU");
     }
 } //class
 class EventCalcu implements EventHandler{

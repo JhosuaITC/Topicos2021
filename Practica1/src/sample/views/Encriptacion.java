@@ -73,14 +73,178 @@ public class Encriptacion extends Stage implements EventHandler<KeyEvent> {
     public void handle(KeyEvent event) {
         //textSalida.appendText(event.getCode().ordinal()+"");
         //System.out.println(event.getCode().toString());
+
+        //ASCII
         switch (event.getCode().toString()){
             case "A":
-                textSalida.appendText("a");
+                textSalida.appendText("97");
                 /*int codigo = event.getCode().ordinal();
                 textSalida.appendText();*/
                 break;
             case "B":
-                textSalida.appendText("b");
+                textSalida.appendText("98");
+                break;
+            case "C":
+                textSalida.appendText("99");
+                break;
+                case "D":
+                textSalida.appendText("100");
+                break;
+                case "E":
+                textSalida.appendText("101");
+                break;
+                case "F":
+                textSalida.appendText("102");
+                break;
+                case "G":
+                textSalida.appendText("103");
+                break;
+                case "H":
+                textSalida.appendText("104");
+                break;
+                case "I":
+                textSalida.appendText("105");
+                break;
+                case "J":
+                textSalida.appendText("106");
+                break;
+                case "K":
+                textSalida.appendText("107");
+                break;
+                case "L":
+                textSalida.appendText("108");
+                break;
+                case "M":
+                textSalida.appendText("109");
+                break;
+                case "N":
+                textSalida.appendText("110");
+                break;
+                case "Ñ":
+                textSalida.appendText("164");
+                break;
+                case "O":
+                textSalida.appendText("111");
+                break;
+                case "P":
+                textSalida.appendText("112");
+                break;
+                case "Q":
+                textSalida.appendText("113");
+                break;
+                case "R":
+                textSalida.appendText("114");
+                break;
+                case "S":
+                textSalida.appendText("115");
+                break;
+                case "T":
+                textSalida.appendText("116");
+                break;
+                case "U":
+                textSalida.appendText("117");
+                break;
+                case "V":
+                textSalida.appendText("118");
+                break;
+                case "W":
+                textSalida.appendText("119");
+                break;
+                case "X":
+                textSalida.appendText("120");
+                break;
+                case "Y":
+                textSalida.appendText("121");
+                break;
+            case "Z":
+                textSalida.appendText("122");
+                break;
+        }
+        //binario
+        switch (event.getCode().toString()){
+            case "A":
+                textSalida.appendText("01100001");
+                /*int codigo = event.getCode().ordinal();
+                textSalida.appendText();*/
+                break;
+            case "B":
+                textSalida.appendText("01100010");
+                break;
+            case "C":
+                textSalida.appendText("01100011");
+                break;
+            case "D":
+                textSalida.appendText("01100100");
+                break;
+            case "E":
+                textSalida.appendText("01100101");
+                break;
+            case "F":
+                textSalida.appendText("01100110");
+                break;
+            case "G":
+                textSalida.appendText("01100111");
+                break;
+            case "H":
+                textSalida.appendText("01101000");
+                break;
+            case "I":
+                textSalida.appendText("01101001");
+                break;
+            case "J":
+                textSalida.appendText("01101010");
+                break;
+            case "K":
+                textSalida.appendText("01101011");
+                break;
+            case "L":
+                textSalida.appendText("01101100");
+                break;
+            case "M":
+                textSalida.appendText("01101101");
+                break;
+            case "N":
+                textSalida.appendText("01101110");
+                break;
+            case "Ñ":
+                textSalida.appendText("01101001");
+                break;
+            case "O":
+                textSalida.appendText("01101111");
+                break;
+            case "P":
+                textSalida.appendText("01110000");
+                break;
+            case "Q":
+                textSalida.appendText("01110001");
+                break;
+            case "R":
+                textSalida.appendText("01110010");
+                break;
+            case "S":
+                textSalida.appendText("01110011");
+                break;
+            case "T":
+                textSalida.appendText("01110100");
+                break;
+            case "U":
+                textSalida.appendText("01110101");
+                break;
+            case "V":
+                textSalida.appendText("01110110");
+                break;
+            case "W":
+                textSalida.appendText("01110111");
+                break;
+            case "X":
+                textSalida.appendText("01111000");
+                break;
+            case "Y":
+                textSalida.appendText("01111001");
+                break;
+            case "Z":
+                textSalida.appendText("01111010");
+                break;
         }
     }
 }
