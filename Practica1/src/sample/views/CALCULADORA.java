@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import sun.plugin2.message.MouseEventMessage;
 
 import java.awt.dnd.MouseDragGestureRecognizer;
+import java.util.Objects;
 
 public class CALCULADORA extends Stage implements EventHandler {
 
@@ -63,11 +64,14 @@ public class CALCULADORA extends Stage implements EventHandler {
                 pos++;//contador de botones creados
             }
         }
+        arBtn[pos-1].setId("font-button");
+
         vBox.setStyle(" -fx-background-color: #757272");
         vBox.getChildren().addAll(txtOperacion,hBoxes[0],hBoxes[1],hBoxes[2],hBoxes[3]);
         vBox.setPadding(new Insets(8,5,5,5));
 
         esena = new Scene(vBox, 250, 250);
+        esena.getStylesheets().add(Objects.requireNonNull(getClass().getResource("../assets/css/StylesCalcu.css")).toExternalForm());
     }//cearUI
 
     @Override

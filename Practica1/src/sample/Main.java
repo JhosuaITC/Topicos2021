@@ -11,6 +11,8 @@ import sample.views.CALCULADORA;
 import sample.views.Encriptacion;
 import sample.views.RompeHD;
 
+import java.util.Objects;
+
 public class Main extends Application implements EventHandler<WindowEvent> {
 
     private VBox vBox;
@@ -49,7 +51,7 @@ public class Main extends Application implements EventHandler<WindowEvent> {
 
         mitCalcu = new MenuItem("Calculadora");
         mitCalcu.setOnAction(event -> opcionesMenu(1));
-        mitCalcu.setStyle(" -fx-background-color: #D5BBE1");
+        //mitCalcu.setStyle(" -fx-background-color: #D5BBE1");
 
         miCabeza = new MenuItem("Rompecabezas");//se agrega el item rompecabeza
         miCabeza.setOnAction(event -> opcionesMenu(2));
@@ -58,7 +60,7 @@ public class Main extends Application implements EventHandler<WindowEvent> {
         miEncriptacion.setOnAction(event -> opcionesMenu(3));
 
         menCompetencia1.getItems().addAll(mitCalcu, miCabeza, miEncriptacion);//se agrega item calc y rompecabeza
-        mnbPrincipal.setStyle(" -fx-background-color: #078A98");
+        //mnbPrincipal.setStyle(" -fx-background-color: #078A98");
 
         miSalir = new MenuItem("Salir");
         miSalir.setOnAction( event -> { System.exit(0);});
@@ -68,7 +70,7 @@ public class Main extends Application implements EventHandler<WindowEvent> {
         vBox.getChildren().add(mnbPrincipal);
 
         escena = new Scene(vBox, 300,100);
-        //escena.getStylesheets().add(getClass().getResource("css/styles.css").toExternalForm());
+        escena.getStylesheets().add(Objects.requireNonNull(getClass().getResource("assets/css/styles.css")).toExternalForm());
 
     /*
         GridPane grid = new GridPane();

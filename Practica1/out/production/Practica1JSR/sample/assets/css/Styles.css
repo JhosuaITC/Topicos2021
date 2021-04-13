@@ -1,6 +1,23 @@
 .root{
- -fx-background-image: url(../assets/spider_man_into_the_spider_verse_miles_morales.jpg)
- -fx-background-repeat: stretch;
+ -fx-background-image: url(/sample/assets/spider-man.jpg), url(/sample/assets/mason.jpg);
+ -fx-background-repeat: stretch, no-repeat;
  -fx-background-size: auto;
- -fx-background-position: center;
+ -fx-background-position: center, right bottom;
+}
+.menu-bar{
+ -fx-background-color:#078A98;
+ -fx-border-color: #000;
+ -fx-border-width:4;
+}
+.menu:hover{
+ -fx-background-color:#E722A2;
+ -fx-font-weight: bold;
+}
+.label:hover{
+ -fx-font-size: 15 pt;
+ -fx-text-fill:#0AEDE8;
+}
+.menu-item{
+ -fx-background-color:#25E5D5;
+ -fx-border-color: #000;
 }
