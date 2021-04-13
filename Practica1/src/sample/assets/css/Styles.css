@@ -1,0 +1,6 @@
+.root{
+ -fx-background-image: url(../assets/spider_man_into_the_spider_verse_miles_morales.jpg)
+ -fx-background-repeat: stretch;
+ -fx-background-size: auto;
+ -fx-background-position: center;
+}

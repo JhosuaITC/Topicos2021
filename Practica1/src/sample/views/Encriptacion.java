@@ -12,6 +12,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+import java.io.File;
+
 public class Encriptacion extends Stage implements EventHandler<KeyEvent> {
     private Scene scene;
     private HBox hBox;
@@ -67,6 +70,8 @@ public class Encriptacion extends Stage implements EventHandler<KeyEvent> {
         fileChooser = new FileChooser();
         fileChooser.setTitle("Buscar archivo para encriptar");
         fileChooser.showOpenDialog(this);
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("txt"));
+        //fileChooser = fileChooser.showOpenDialog(handle();
     }
 
     @Override
@@ -114,6 +119,7 @@ public class Encriptacion extends Stage implements EventHandler<KeyEvent> {
                 case "L":
                 textSalida.appendText("108");
                 break;
+                ///////
                 case "M":
                 textSalida.appendText("109");
                 break;
@@ -161,11 +167,11 @@ public class Encriptacion extends Stage implements EventHandler<KeyEvent> {
                 break;
         }
         //binario
-        switch (event.getCode().toString()){
+        /*switch (event.getCode().toString()){
             case "A":
                 textSalida.appendText("01100001");
-                /*int codigo = event.getCode().ordinal();
-                textSalida.appendText();*/
+                //int codigo = event.getCode().ordinal();
+                //textSalida.appendText();
                 break;
             case "B":
                 textSalida.appendText("01100010");
@@ -245,6 +251,6 @@ public class Encriptacion extends Stage implements EventHandler<KeyEvent> {
             case "Z":
                 textSalida.appendText("01111010");
                 break;
-        }
+        }*/
     }
 }
