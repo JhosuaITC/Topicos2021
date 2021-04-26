@@ -72,6 +72,13 @@ public class Encriptacion extends Stage implements EventHandler<KeyEvent> {
 
         scene = new Scene(vBox,600,400);
     }
+    private void clean() {
+        textEntrada.clear();
+        textSalida.clear();
+        //archivo= null;
+        //fileChooser= null;
+        text = "";
+    }
     private void abrirArchivo(){
         fileChooser = new FileChooser();
         fileChooser.setTitle("Buscar archivo para encriptar");

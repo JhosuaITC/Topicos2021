@@ -3,7 +3,6 @@ package sample.views;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -11,9 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import sun.plugin2.message.MouseEventMessage;
 
-import java.awt.dnd.MouseDragGestureRecognizer;
 import java.util.Objects;
 
 public class CALCULADORA extends Stage implements EventHandler {
@@ -24,6 +21,10 @@ public class CALCULADORA extends Stage implements EventHandler {
     private Button[] arBtn;
     private VBox vBox;
     private  char[] arNumeros = {'7','8','9','/','4','5','6','*','1','2','3','-','0','.','=','+'};
+    private String cadencon ="";
+    private String operador = "";
+    private String num = "";
+    private double operacion;
 
     public CALCULADORA() {
 
@@ -56,6 +57,33 @@ public class CALCULADORA extends Stage implements EventHandler {
                     @Override
                     public void handle(MouseEvent event) {
                         //System.out.println("Tercer Evento UwU:");
+                        String caract = "" + event.getSource();
+
+                        if(!String.valueOf(btnPresionado(caract)).equals("=")){
+                            cadencon += btnPresionado(caract);
+                            if(!String.valueOf(btnPresionado(caract)).equals("+") && !String.valueOf(btnPresionado(caract)).equals("-")
+                                    && !String.valueOf(btnPresionado(caract)).equals("*") && !String.valueOf(btnPresionado(caract)).equals("/")){
+                                num += btnPresionado(caract);
+                                //txtOperacion.setText("" + btnPresionado(caract));
+                                txtOperacion.setText(cadencon);
+                            } else if(String.valueOf(btnPresionado(caract)).equals("+") || String.valueOf(btnPresionado(caract)).equals("-")
+                                    || String.valueOf(btnPresionado(caract)).equals("*") || String.valueOf(btnPresionado(caract)).equals("/")){
+                                txtOperacion.setText("");
+                                cadencon = "";
+                                operacion++;
+                                num += "-";
+                                if(operacion == 1){
+                                    operador += btnPresionado(caract);
+                                } else{
+                                    operador += " " + btnPresionado(caract);
+                                }
+                            }
+                        } else{
+                            txtOperacion.setText(String.valueOf(soloPrueba(num, operador)));
+                            cadencon = "";
+                            operador = "";
+                            num = "";
+                        }
                     }
                 });
                 //txtOperacion.addEventHandler(MouseEvent.MOUSE_CLICKED);
@@ -77,6 +105,30 @@ public class CALCULADORA extends Stage implements EventHandler {
     @Override
     public void handle(Event event) {
         // System.out.println("Primer Evento UwU");
+    }
+    private char btnPresionado(String entrada){
+        char caracter = Character.MIN_VALUE;
+        caracter = entrada.charAt(entrada.length()-2);
+        return caracter;
+    }
+    public double soloPrueba (String entrada, String operandos){
+        double resultado = 0;
+        String partCadena[] = entrada.split("-");
+        switch (operandos){
+            case "+":
+                resultado = Double.parseDouble(partCadena[0]) + Double.parseDouble(partCadena[1]);
+                break;
+            case "-":
+                resultado = Double.parseDouble(partCadena[0]) - Double.parseDouble(partCadena[1]);
+                break;
+            case "*":
+                resultado = Double.parseDouble(partCadena[0]) * Double.parseDouble(partCadena[1]);
+                break;
+            case "/":
+                resultado = Double.parseDouble(partCadena[0]) / Double.parseDouble(partCadena[1]);
+                break;
+        }
+        return resultado;
     }
 } //class
 class EventCalcu implements EventHandler{
