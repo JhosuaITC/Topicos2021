@@ -32,6 +32,7 @@ public class RompeHD extends Stage implements EventHandler {
     private int noPiezas;
     private boolean bandera = false;   // Bandera nos indica si ya se seleccionó una carta para el intercambio
     private int xTemp, yTemp = 0;
+    private String imagin="";
 
     public RompeHD(){
 
@@ -93,18 +94,22 @@ public class RompeHD extends Stage implements EventHandler {
             xTemp = i;
             yTemp = j;
         }else{
-            Image img = new Image("sample/assets/"+arAsignacion[i][j]);
+            Image img = new Image("sample/assets/"+arAsignacion[xTemp][yTemp]);
             ImageView imv = new ImageView(img);
             imv.setFitHeight(145);
             imv.setPreserveRatio(true);
 
-            Image img2 = new Image("sample/assets/"+arAsignacion[xTemp][yTemp]);
+            Image img2 = new Image("sample/assets/"+arAsignacion[i][j]);
             ImageView imv2 = new ImageView(img2);
             imv2.setFitHeight(145);
             imv2.setPreserveRatio(true);
 
-            btnTarjetas[xTemp][yTemp].setGraphic(imv);
-            btnTarjetas[i][j].setGraphic(imv2);
+            btnTarjetas[i][j].setGraphic(imv);
+            btnTarjetas[xTemp][yTemp].setGraphic(imv2);
+
+            String imaging = arAsignacion[xTemp][yTemp];
+            arAsignacion[xTemp][yTemp]=arAsignacion[i][j];
+            arAsignacion[i][j]= imaging;
 
             bandera = !bandera;
         }

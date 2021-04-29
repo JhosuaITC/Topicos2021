@@ -8,7 +8,8 @@ public class Conexion {
     private static String user = "ibiza21";
     private static String pwd = "toor";
     private static String db = "micasete";
-    private static Connection coexion;
+
+    public static Connection coexion;
 
     public static void getConexion(){
         try{

@@ -7,8 +7,11 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import sample.models.CancionesDAO;
+import sample.models.Conexion;
 import sample.views.CALCULADORA;
 import sample.views.Encriptacion;
+import sample.views.FormCanciones;
 import sample.views.RompeHD;
 
 import java.util.Objects;
@@ -18,7 +21,7 @@ public class Main extends Application implements EventHandler<WindowEvent> {
     private VBox vBox;
     private MenuBar mnbPrincipal;
     private Menu menCompetencia1, menCompetencia2, menCerrar;
-    private MenuItem mitCalcu, miCabeza, miEncriptacion, miSalir;
+    private MenuItem mitCalcu, miCabeza, miEncriptacion,mitBDCASETE, miSalir;
     private Scene escena;
 
     /*
@@ -37,6 +40,8 @@ public class Main extends Application implements EventHandler<WindowEvent> {
         primaryStage.setScene(escena);
         primaryStage.setMaximized(true);
         primaryStage.show();
+//base ded datos, abrir conexcion global
+        Conexion.getConexion();
 
     }
 
@@ -59,8 +64,13 @@ public class Main extends Application implements EventHandler<WindowEvent> {
         miEncriptacion = new MenuItem("Encriptar");
         miEncriptacion.setOnAction(event -> opcionesMenu(3));
 
-        menCompetencia1.getItems().addAll(mitCalcu, miCabeza, miEncriptacion);//se agrega item calc y rompecabeza
+
         //mnbPrincipal.setStyle(" -fx-background-color: #078A98");
+
+        mitBDCASETE = new MenuItem("BDMicasete");
+        mitBDCASETE.setOnAction(event -> opcionesMenu(4));
+
+        menCompetencia1.getItems().addAll(mitCalcu, miCabeza, miEncriptacion,mitBDCASETE);//se agrega item calc y rompecabez
 
         miSalir = new MenuItem("Salir");
         miSalir.setOnAction( event -> { System.exit(0);});
@@ -119,6 +129,9 @@ public class Main extends Application implements EventHandler<WindowEvent> {
             case 2: new RompeHD();
                 break;
             case 3: new Encriptacion();
+            break;
+            case 4: new FormCanciones();
+            break;
         }
     }
 

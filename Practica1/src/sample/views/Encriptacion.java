@@ -106,6 +106,11 @@ public class Encriptacion extends Stage implements EventHandler<KeyEvent> {
             } finally {
                 try {
                     fileReader.close();
+                    bufferedReader.close();
+                    archivo = null;
+                    textEntrada.appendText(text);
+                    encriptarArchivo(text);
+                    text="";
                 } catch (Exception e2) {
                     System.out.println(e2.toString());
                 }
