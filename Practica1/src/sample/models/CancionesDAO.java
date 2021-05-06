@@ -99,6 +99,7 @@ public class CancionesDAO {
                 dao.nombre_cancion=resultSet.getString("nombre_cancion");
                 dao.duracion=resultSet.getInt("duracion");
                 dao.portada= resultSet.getString("portada");
+                dao.year= resultSet.getInt("year");
                 dao.letra=resultSet.getString("letra");
                 list.add(dao);
             }

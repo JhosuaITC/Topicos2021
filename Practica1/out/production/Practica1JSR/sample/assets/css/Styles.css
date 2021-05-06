@@ -1,5 +1,5 @@
 .root{
- -fx-background-image: url(/sample/assets/spider-man.jpg), url(/sample/assets/mason.jpg);
+ -fx-background-image: url(/sample/assets/spider-man.jpg), url(/sample/assets/css/saita.png);
  -fx-background-repeat: stretch, no-repeat;
  -fx-background-size: auto;
  -fx-background-position: center, right bottom;
