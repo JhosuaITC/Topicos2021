@@ -7,12 +7,10 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import sample.assets.components.Runner;
 import sample.models.CancionesDAO;
 import sample.models.Conexion;
-import sample.views.CALCULADORA;
-import sample.views.Encriptacion;
-import sample.views.FormCanciones;
-import sample.views.RompeHD;
+import sample.views.*;
 
 import java.util.Objects;
 
@@ -21,7 +19,7 @@ public class Main extends Application implements EventHandler<WindowEvent> {
     private VBox vBox;
     private MenuBar mnbPrincipal;
     private Menu menCompetencia1, menCompetencia2, menCerrar;
-    private MenuItem mitCalcu, miCabeza, miEncriptacion,mitBDCASETE, miSalir;
+    private MenuItem mitCalcu, miCabeza, miEncriptacion,mitBDCASETE,mitRunners, miSalir;
     private Scene escena;
 
     /*
@@ -42,7 +40,12 @@ public class Main extends Application implements EventHandler<WindowEvent> {
         primaryStage.show();
 //base ded datos, abrir conexcion global
         Conexion.getConexion();
-
+        //Runner
+        /*new Runner("Homero").start();
+        new Runner("Flash").start();
+        new Runner("Quick Silver").start();
+        new Runner("Bob Toronja").start();
+        new Runner("Chuerk").start();*/
     }
 
     private void CrearUi() {
@@ -50,7 +53,7 @@ public class Main extends Application implements EventHandler<WindowEvent> {
 
         mnbPrincipal = new MenuBar();
         menCompetencia1 = new Menu("Competencia 1");
-        menCompetencia2 = new Menu("Competencia 1");
+        menCompetencia2 = new Menu("Competencia 2");
         menCerrar = new Menu("Cerrar ");
         mnbPrincipal.getMenus().addAll(menCompetencia1, menCompetencia2, menCerrar);
 
@@ -71,6 +74,10 @@ public class Main extends Application implements EventHandler<WindowEvent> {
         mitBDCASETE.setOnAction(event -> opcionesMenu(4));
 
         menCompetencia1.getItems().addAll(mitCalcu, miCabeza, miEncriptacion,mitBDCASETE);//se agrega item calc y rompecabez
+
+        mitRunners = new MenuItem("Ejecucion de hilos");
+        mitRunners.setOnAction(event-> opcionesMenu(5));
+        menCompetencia2.getItems().addAll(mitRunners);
 
         miSalir = new MenuItem("Salir");
         miSalir.setOnAction( event -> { System.exit(0);});
@@ -131,6 +138,8 @@ public class Main extends Application implements EventHandler<WindowEvent> {
             case 3: new Encriptacion();
             break;
             case 4: new FormCanciones();
+            break;
+            case 5: new Pista();
             break;
         }
     }

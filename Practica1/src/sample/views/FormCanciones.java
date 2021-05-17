@@ -1,11 +1,9 @@
 package sample.views;
 
 import javafx.beans.value.ObservableValue;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -18,11 +16,9 @@ public class FormCanciones extends Stage {
     private Button btnAdd;
     private VBox vBox;
     private Scene scene;
-
     private CancionesDAO objcanDAO;
     
     public FormCanciones(){
-
         objcanDAO = new CancionesDAO();
         CrearUI();
         this.setTitle("Gestion de canciones");
@@ -34,9 +30,12 @@ public class FormCanciones extends Stage {
         vBox = new VBox();
         tableVCansiones = new TableView<>();
         btnAdd = new Button("+ Add");
+        btnAdd.setOnAction(event -> {
+            new FrmCancion(tableVCansiones,null);
+        });
         vBox.getChildren().addAll(tableVCansiones,btnAdd);
         CreaTabla();
-        scene = new Scene(vBox, 500,250);
+        scene = new Scene(vBox, 800,250);
 
     }
 
@@ -60,17 +59,17 @@ public class FormCanciones extends Stage {
         tbcLetra.setCellValueFactory(new PropertyValueFactory<>("letra"));
 
         TableColumn<CancionesDAO, String> tblEdit = new TableColumn<>("Edit");
-        tblEdit.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<CancionesDAO, String>, ObservableValue<String>>() {
+        tblEdit.setCellFactory(new Callback<TableColumn<CancionesDAO, String>, TableCell<CancionesDAO, String>>() {
             @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<CancionesDAO, String> param) {
-                return null;
+            public TableCell<CancionesDAO, String> call(TableColumn<CancionesDAO, String> param) {
+                return new CellCustom(1);
             }
         });
         TableColumn<CancionesDAO, String> tblDelet = new TableColumn<>("Deleted");
-        tblEdit.setCellFactory(new Callback<TableColumn<CancionesDAO, String>, TableCell<CancionesDAO,String>>() {
+        tblDelet.setCellFactory(new Callback<TableColumn<CancionesDAO, String>, TableCell<CancionesDAO,String>>() {
             @Override
             public TableCell<CancionesDAO,String> call(TableColumn<CancionesDAO, String> param) {
-                return new CellCustom();
+                return new CellCustom(2);
             }
         });
         tableVCansiones.getColumns().addAll(tbcIdCancion,tbcNombreCancion,tbcDuracion,tbcPortada,tbcYear,tbcLetra,tblEdit,tblDelet);

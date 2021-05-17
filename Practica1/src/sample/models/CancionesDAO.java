@@ -54,8 +54,8 @@ public class CancionesDAO {
     //Conexion conexion;
     public void INSERT(){
         try {
-            String query ="INSERT tbl_canciones (nombre_cancion, duracion, portada, year, letra)"+
-                    "Values('"+nombre_cancion+"',"+duracion+", '"+portada+"', "+year+",'"+letra+"')";
+            String query = "INSERT INTO tbl_canciones (nombre_cancion, duracion, portada, anio, letra) " +
+                    "VALUES('"+nombre_cancion+"',"+duracion+",'"+portada+"',"+year+",'"+letra+"')";
             //Conexion.getConexion();
             Statement statement =Conexion.coexion.createStatement();
             statement.executeUpdate(query);
@@ -66,8 +66,8 @@ public class CancionesDAO {
     //manda datos
     public void UPDATE(){
         try {
-            String query ="UPDATE tbl_canciones SET nombre_canciones= '"+nombre_cancion+"',duracion= "+duracion+", "+
-                    "portada ='"+portada+"',year= ''"+year+"', letra='"+letra+"' WHERE id_cancion = "+id_cancion;
+            String query ="UPDATE tbl_canciones SET nombre_cancion= '"+nombre_cancion+"',duracion= "+duracion+", "+
+                    "portada ='"+portada+"',year= "+year+", letra='"+letra+"' WHERE id_cancion = "+id_cancion;
             Statement statement = Conexion.coexion.createStatement();
             statement.executeUpdate(query);
         }catch (Exception e){
@@ -75,7 +75,7 @@ public class CancionesDAO {
         }
     }
     //actualiza la BD
-    public void DELATE(){
+    public void DELETE(){
         try{
             String query= "DELETE FROM tbl_canciones WHERE id_cancion = "+id_cancion;
             Statement statement = Conexion.coexion.createStatement();
