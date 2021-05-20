@@ -19,7 +19,7 @@ public class Main extends Application implements EventHandler<WindowEvent> {
     private VBox vBox;
     private MenuBar mnbPrincipal;
     private Menu menCompetencia1, menCompetencia2, menCerrar;
-    private MenuItem mitCalcu, miCabeza, miEncriptacion,mitBDCASETE,mitRunners, miSalir;
+    private MenuItem mitCalcu, miCabeza, miEncriptacion,mitBDCASETE,mitRunners,mitSocket, miSalir;
     private Scene escena;
 
     /*
@@ -77,8 +77,11 @@ public class Main extends Application implements EventHandler<WindowEvent> {
 
         mitRunners = new MenuItem("Ejecucion de hilos");
         mitRunners.setOnAction(event-> opcionesMenu(5));
-        menCompetencia2.getItems().addAll(mitRunners);
 
+        mitSocket = new MenuItem("Manejo de Socket");
+        mitSocket.setOnAction(event -> opcionesMenu(6));
+
+        menCompetencia2.getItems().addAll(mitRunners, mitSocket);
         miSalir = new MenuItem("Salir");
         miSalir.setOnAction( event -> { System.exit(0);});
 
@@ -140,6 +143,8 @@ public class Main extends Application implements EventHandler<WindowEvent> {
             case 4: new FormCanciones();
             break;
             case 5: new Pista();
+            break;
+            case 6: new ClienteSocket().connectToServer();
             break;
         }
     }
