@@ -83,6 +83,7 @@ public class CALCULADORA extends Stage implements EventHandler {
                             cadencon = "";
                             operador = "";
                             num = "";
+                            operacion = 0;
                         }
                     }
                 });

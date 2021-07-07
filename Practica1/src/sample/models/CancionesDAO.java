@@ -54,7 +54,7 @@ public class CancionesDAO {
     //Conexion conexion;
     public void INSERT(){
         try {
-            String query = "INSERT INTO tbl_canciones (nombre_cancion, duracion, portada, anio, letra) " +
+            String query = "INSERT INTO tbl_canciones (nombre_cancion, duracion, portada, year, letra) " +
                     "VALUES('"+nombre_cancion+"',"+duracion+",'"+portada+"',"+year+",'"+letra+"')";
             //Conexion.getConexion();
             Statement statement =Conexion.coexion.createStatement();

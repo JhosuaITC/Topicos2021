@@ -7,7 +7,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import sample.assets.components.Runner;
 import sample.models.CancionesDAO;
 import sample.models.Conexion;
 import sample.views.*;
@@ -39,7 +38,7 @@ public class Main extends Application implements EventHandler<WindowEvent> {
         primaryStage.setMaximized(true);
         primaryStage.show();
 //base ded datos, abrir conexcion global
-        Conexion.getConexion();
+       Conexion.getConexion();
         //Runner
         /*new Runner("Homero").start();
         new Runner("Flash").start();
